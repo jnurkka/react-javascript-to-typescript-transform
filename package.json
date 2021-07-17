@@ -48,7 +48,7 @@
         "@types/lodash": "^4.14.109",
         "@types/node": "^16.3.3",
         "@types/prettier": "^1.12.2",
-        "@types/react": "^16.3.14",
+        "@types/react": "^17.0.14",
         "dedent": "^0.7.0",
         "husky": "^0.14.3",
         "jest": "^22.4.4",
