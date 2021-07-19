@@ -32,7 +32,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "chalk": "^2.4.1",
-        "commander": "^2.15.1",
+        "commander": "5.1.0",
         "detect-indent": "^5.0.0",
         "glob": "^7.1.2",
         "lodash": "^4.17.10",
@@ -46,7 +46,7 @@
         "@types/glob": "^5.0.35",
         "@types/jest": "^22.2.3",
         "@types/lodash": "^4.14.109",
-        "@types/node": "^10.1.2",
+        "@types/node": "^16.3.3",
         "@types/prettier": "^1.12.2",
         "@types/react": "^16.3.14",
         "dedent": "^0.7.0",
