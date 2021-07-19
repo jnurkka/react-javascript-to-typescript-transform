@@ -1,3 +1,9 @@
+This is an updated fork of [https://github.com/lyft/react-javascript-to-typescript-transform](https://github.com/lyft/react-javascript-to-typescript-transform)
+
+# To Do
+- [ ] Use Interface instead of Type
+- [ ] Fix issue with commas in Type definition (should be semicolons)
+
 # React JavaScript to TypeScript Transform
 
 [![Build Status](https://travis-ci.org/lyft/react-javascript-to-typescript-transform.svg?branch=master)](https://travis-ci.org/lyft/react-javascript-to-typescript-transform)
@@ -77,7 +83,7 @@ class MyComponent extends React.Component<Props, State> {
 ### CLI
 
 ```
-npm install -g react-js-to-ts
+npm install -g @cliniserve/react-js-to-ts
 ```
 
 ```
