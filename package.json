@@ -1,6 +1,6 @@
 {
-    "name": "react-js-to-ts",
-    "version": "1.4.0",
+    "name": "@cliniserve/react-js-to-ts",
+    "version": "1.5.1",
     "description": "Convert React code from JavaScript to TypeScript",
     "main": "dist/index.js",
     "scripts": {
@@ -28,7 +28,7 @@
         "*.{js,json,css,md,ts,tsx}": ["node_modules/.bin/prettier --write", "git add"]
     },
     "bin": "dist/cli.js",
-    "author": "Mohsen Azimi <me@azimi.me>",
+    "author": "Jaakko Nurkka <jaakko@cliniserve.de>",
     "license": "Apache-2.0",
     "dependencies": {
         "chalk": "^2.4.1",
