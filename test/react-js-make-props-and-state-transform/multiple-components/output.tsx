@@ -1,6 +1,6 @@
 import * as React from 'react';
-type MyComponentState = { foo: number, bar: number };
-export default class MyComponent extends React.Component<{}, MyComponentState> {
+type State = { foo: number, bar: number };
+export default class MyComponent extends React.Component<{}, State> {
     render() {
         return <button onClick={this.onclick.bind(this)} />;
     }
@@ -8,10 +8,10 @@ export default class MyComponent extends React.Component<{}, MyComponentState> {
         this.setState({ foo: 1, bar: 2 });
     }
 }
-type AnotherComponentProps = {
+type Props = {
     foo: string,
 };
-export class AnotherComponent extends React.Component<AnotherComponentProps, {}> {
+export class AnotherComponent extends React.Component<Props, {}> {
     static propTypes = {
         foo: React.PropTypes.string.isRequired,
     };

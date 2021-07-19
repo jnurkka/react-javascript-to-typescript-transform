@@ -43,18 +43,18 @@ class MyComponent extends React.Component {
 **output**
 
 ```tsx
-type MyComponentProps = {
+type Props = {
     prop1: string;
     prop2?: number;
 };
 
-type MyComponentState = {
+type State = {
     foo: number;
     bar: string;
     baz: number;
 };
 
-class MyComponent extends React.Component<MyComponentProps, MyComponentState> {
+class MyComponent extends React.Component<Props, State> {
     constructor() {
         super();
         this.state = { foo: 1, bar: 'str' };

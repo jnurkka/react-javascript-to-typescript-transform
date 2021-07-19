@@ -1,13 +1,13 @@
-type HelloProps = {
+type Props = {
     message?: string,
 };
-const Hello: React.FC<HelloProps> = ({ message }) => {
+const Hello: React.FC<Props> = ({ message }) => {
     return <div>hello {message}</div>;
 };
-type HeyProps = {
+type Props = {
     name: string,
 };
-const Hey: React.FC<HeyProps> = ({ name }) => {
+const Hey: React.FC<Props> = ({ name }) => {
     return <div>hey, {name}</div>;
 };
 Hey.propTypes = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-type MyComponentProps = {
+type Props = {
     any?: any,
     array?: any[],
     bool?: boolean,
@@ -39,7 +39,7 @@ type MyComponentProps = {
         fontSize: number,
     },
 };
-const MyComponent: React.FC<MyComponentProps> = () => {
+const MyComponent: React.FC<Props> = () => {
     return <div />;
 };
 MyComponent.propTypes = {

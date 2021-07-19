@@ -44,8 +44,8 @@ function visitReactClassDeclaration(
     const stateType = getStateTypeOfReactComponentClass(classDeclaration, typeChecker);
     const shouldMakePropTypeDeclaration = propType.members.length > 0;
     const shouldMakeStateTypeDeclaration = !isStateTypeMemberEmpty(stateType);
-    const propTypeName = `${className}Props`;
-    const stateTypeName = `${className}State`;
+    const propTypeName = `Props`;
+    const stateTypeName = `State`;
     const propTypeDeclaration = ts.createTypeAliasDeclaration([], [], propTypeName, [], propType);
     const stateTypeDeclaration = ts.createTypeAliasDeclaration([], [], stateTypeName, [], stateType);
     const propTypeRef = ts.createTypeReferenceNode(propTypeName, []);

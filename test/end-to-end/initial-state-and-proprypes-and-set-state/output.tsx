@@ -1,13 +1,13 @@
 import * as React from 'react';
-type MyComponentProps = {
+type Props = {
     baz: string,
 };
-type MyComponentState = {
+type State = {
     dynamicState: number,
     foo: number,
     bar: string,
 };
-export default class MyComponent extends React.Component<MyComponentProps, MyComponentState> {
+export default class MyComponent extends React.Component<Props, State> {
     state = { foo: 1, bar: 'str' };
     render() {
         return <div />;

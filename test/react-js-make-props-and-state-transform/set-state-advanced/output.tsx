@@ -1,8 +1,8 @@
 import * as React from 'react';
-type MyComponentState = { foo: number, bar: number } & { baz: number } & {
+type State = { foo: number, bar: number } & { baz: number } & {
     something: { big: number, here: string, of: { a: number }[] },
 };
-export default class MyComponent extends React.Component<{}, MyComponentState> {
+export default class MyComponent extends React.Component<{}, State> {
     render() {
         return <button onClick={this.onclick.bind(this)} />;
     }

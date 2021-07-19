@@ -1,5 +1,5 @@
 import * as React from 'react';
-type MyComponentProps = {
+type Props = {
     any?: any,
     array?: any[],
     bool?: boolean,
@@ -39,7 +39,7 @@ type MyComponentProps = {
         fontSize: number,
     },
 };
-export default class MyComponent extends React.Component<MyComponentProps, {}> {
+export default class MyComponent extends React.Component<Props, {}> {
     static propTypes = {
         children: React.PropTypes.node,
         any: React.PropTypes.any,

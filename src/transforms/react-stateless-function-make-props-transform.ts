@@ -21,11 +21,11 @@ export type Factory = ts.TransformerFactory<ts.SourceFile>;
  * }
  *
  * After:
- * Type HelloProps = {
+ * Type Props = {
  *   message: string;
  * }
  *
- * const Hello: React.FC<HelloProps> = ({ message }) => {
+ * const Hello: React.FC<Props> = ({ message }) => {
  *   return <div>hello {message}</div>
  * }
  *
@@ -79,7 +79,7 @@ function visitReactStatelessComponent(
 
     const propType = getPropTypesFromTypeAssignment(propTypesExpressionStatement);
     const shouldMakePropTypeDeclaration = propType.members.length > 0;
-    const propTypeName = `${componentName}Props`;
+    const propTypeName = 'Props';
     const propTypeDeclaration = ts.createTypeAliasDeclaration([], [], propTypeName, [], propType);
     const propTypeRef = ts.createTypeReferenceNode(propTypeName, []);
 

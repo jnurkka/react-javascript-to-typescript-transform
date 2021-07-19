@@ -1,7 +1,7 @@
-type HelloProps = {
+type Props = {
     message?: string,
 };
-const Hello: React.FC<HelloProps> = ({ message }) => {
+const Hello: React.FC<Props> = ({ message }) => {
     return <div>hello {message}</div>;
 };
 Hello.propTypes = {
