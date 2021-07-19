@@ -20,7 +20,7 @@ export type Factory = ts.TransformerFactory<ts.SourceFile>;
 export function reactRemovePropTypesImportTransformFactoryFactory(typeChecker: ts.TypeChecker): Factory {
     return function reactRemovePropTypesImportTransformFactory(context: ts.TransformationContext) {
         return function reactRemovePropTypesImportTransform(sourceFile: ts.SourceFile) {
-            const visited = ts.updateSourceFileNode(
+            const visited = ts.factory.updateSourceFile(
                 sourceFile,
                 sourceFile.statements
                     .filter(s => {
@@ -58,15 +58,16 @@ function updateReactImportIfNeeded(statement: ts.Statement) {
         return statement;
     }
 
-    const newImportClause = ts.updateImportClause(
+    const newImportClause = ts.factory.updateImportClause(
         statement.importClause,
+        false,
         statement.importClause.name,
         newNamedBindingElements.length === 0
             ? undefined
-            : ts.updateNamedImports(namedBindings, newNamedBindingElements),
+            : ts.factory.updateNamedImports(namedBindings, newNamedBindingElements),
     );
 
-    return ts.updateImportDeclaration(
+    return ts.factory.updateImportDeclaration(
         statement,
         statement.decorators,
         statement.modifiers,

@@ -126,8 +126,7 @@ function getTypeFromReactPropTypeExpression(node: ts.Expression): ts.TypeNode {
         } else if (/oneOfType$/.test(text)) {
             const argument = node.arguments[0];
             if (ts.isArrayLiteralExpression(argument)) {
-                result = ts.createUnionOrIntersectionTypeNode(
-                    ts.SyntaxKind.UnionType,
+                result = ts.factory.createUnionTypeNode(
                     argument.elements.map(elm => getTypeFromReactPropTypeExpression(elm)),
                 );
             }

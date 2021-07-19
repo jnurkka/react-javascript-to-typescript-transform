@@ -145,7 +145,7 @@ export function collapseIntersectionInterfacesTransformFactoryFactory(
                 // first dedupe literal types
                 // TODO: this only works if all types are primitive types like string or number
                 const uniqueTypes = _.uniqBy(types, type => type.kind);
-                return ts.createUnionOrIntersectionTypeNode(ts.SyntaxKind.UnionType, uniqueTypes);
+                return ts.factory.createUnionTypeNode(uniqueTypes);
             }
         };
     };

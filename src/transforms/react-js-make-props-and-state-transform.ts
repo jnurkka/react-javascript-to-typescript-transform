@@ -158,16 +158,16 @@ function getStateTypeOfReactComponentClass(
     typeChecker: ts.TypeChecker,
 ): ts.TypeNode {
     const initialState = getInitialStateFromClassDeclaration(classDeclaration, typeChecker);
-    const initialStateIsVoid = initialState.kind === ts.SyntaxKind.VoidKeyword;
+    const initialStateIsVoid = initialState === undefined || initialState.kind === ts.SyntaxKind.VoidKeyword;
     const collectedStateTypes = getStateLookingForSetStateCalls(classDeclaration, typeChecker);
     if (!collectedStateTypes.length && initialStateIsVoid) {
         return ts.createTypeLiteralNode([]);
     }
-    if (!initialStateIsVoid) {
+    if (!initialStateIsVoid && initialState) {
         collectedStateTypes.push(initialState);
     }
 
-    return ts.createUnionOrIntersectionTypeNode(ts.SyntaxKind.IntersectionType, collectedStateTypes);
+    return ts.factory.createIntersectionTypeNode(collectedStateTypes);
 }
 
 /**
@@ -178,7 +178,7 @@ function getStateTypeOfReactComponentClass(
 function getInitialStateFromClassDeclaration(
     classDeclaration: ts.ClassDeclaration,
     typeChecker: ts.TypeChecker,
-): ts.TypeNode {
+): ts.TypeNode | undefined {
     // initial state class member
 
     const initialStateMember = _.find(classDeclaration.members, member => {
@@ -192,7 +192,7 @@ function getInitialStateFromClassDeclaration(
     if (initialStateMember && ts.isPropertyDeclaration(initialStateMember) && initialStateMember.initializer) {
         const type = typeChecker.getTypeAtLocation(initialStateMember.initializer)!;
 
-        return typeChecker.typeToTypeNode(type);
+        return typeChecker.typeToTypeNode(type, undefined, undefined);
     }
 
     // Initial state in constructor
@@ -207,7 +207,11 @@ function getInitialStateFromClassDeclaration(
                 ts.isBinaryExpression(statement.expression) &&
                 statement.expression.left.getText() === 'this.state'
             ) {
-                return typeChecker.typeToTypeNode(typeChecker.getTypeAtLocation(statement.expression.right));
+                return typeChecker.typeToTypeNode(
+                    typeChecker.getTypeAtLocation(statement.expression.right),
+                    undefined,
+                    undefined,
+                );
             }
         }
     }
@@ -241,8 +245,12 @@ function getStateLookingForSetStateCalls(
             ts.isCallExpression(node.expression) &&
             node.expression.expression.getText().match(/setState/)
         ) {
-            const type = typeChecker.getTypeAtLocation(node.expression.arguments[0]);
-            typeNodes.push(typeChecker.typeToTypeNode(type));
+            const typeNode = typeChecker.typeToTypeNode(
+                typeChecker.getTypeAtLocation(node.expression.arguments[0]),
+                undefined,
+                undefined,
+            );
+            if (typeNode) typeNodes.push(typeNode);
         }
     }
 }
